@@ -5,9 +5,11 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("IMDb_Top_250_Movies.csv", encoding="ISO-8859-1", dtype=object)
 data = df.head()
 
+df.info()
+
 data["Duration"] = pd.to_numeric(data["Duration"], errors="coerce")
-data["Release_Year"] = pd.to_numeric(data["Release_Year"], errors="coerce")
-data.plot(kind="bar",x="Release_Year",y="Duration",color="green")
+data["Name"] = data['Name'].astype(str)
+data.plot(kind="bar",y="Duration",x="Name",color="green")
 
 
 plt.show()
